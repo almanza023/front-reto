@@ -2,9 +2,9 @@
 <template>
 
 
-    <div class="container">
+<div class="container">
  <b-card  :footer="tarea.fecha_limite_entrea">
-   <div class="d-flex justify-content-between">
+  <div class="d-flex justify-content-between">
   <div class="p-2 bd-highlight">Tarea N° {{ numero }}</div>
   <div class="p-2 bd-highlight">{{ tarea.trabajador.full_name }}</div>
   <div class="p-2 bd-highlight">
@@ -18,7 +18,12 @@
         </p>
     </b-card-text>        
     <b-card-footer>
-        {{ tarea.estado }}
+        
+        <div class="d-flex justify-content-between">
+  <div class="p-2 bd-highlight">{{ tarea.fecha_limite_entrega }}</div>
+  <div class="p-2 bd-highlight">{{  tarea.estado }}</div>
+  
+</div>
     </b-card-footer>
    
   </b-card>
@@ -97,11 +102,7 @@ export default {
     methods: {      
       async onSubmit(event) {
         event.preventDefault()       
-        await this.axios.post("http://localhost/ejemplarsas/public/api/cambiarEstadoTarea", this.estadoTarea, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL2VqZW1wbGFyc2FzXC9wdWJsaWNcL2FwaVwvcmVnaXN0ZXIiLCJpYXQiOjE2NjE2NjAwODUsImV4cCI6MTY2MTY2MzY4NSwibmJmIjoxNjYxNjYwMDg1LCJqdGkiOiJGQ3h1YXVKRlNTVnVaQmlSIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.T9fMfaDgz0KJ6ezF3MT8aTx6bzaoI43MbhQap-HotQo'
-        }})
+        await this.axios.post("http://localhost/ejemplarsas/public/api/cambiarEstadoTarea", this.estadoTarea)
         .then(response => {
             this.estadoTarea.status = response.data.status
            alert('Estado Cambiado Exitosamente')        

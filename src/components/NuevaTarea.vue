@@ -65,11 +65,7 @@ export default {
       async onSubmit(event) {
         event.preventDefault()
        
-        await this.axios.post("http://localhost/ejemplarsas/public/api/tareas", this.tarea, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL2VqZW1wbGFyc2FzXC9wdWJsaWNcL2FwaVwvcmVnaXN0ZXIiLCJpYXQiOjE2NjE2NjAwODUsImV4cCI6MTY2MTY2MzY4NSwibmJmIjoxNjYxNjYwMDg1LCJqdGkiOiJGQ3h1YXVKRlNTVnVaQmlSIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.T9fMfaDgz0KJ6ezF3MT8aTx6bzaoI43MbhQap-HotQo'
-        }})
+        await this.axios.post("http://localhost/ejemplarsas/public/api/tareas", this.tarea)
         .then(response => {
             this.tarea.status = response.data.status
            alert('Tarea Registrada!!')
@@ -89,11 +85,7 @@ export default {
       },
      
       async cargarTrabajadores(){       
-        await this.axios.get("http://localhost/ejemplarsas/public/api/trabajadores", {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL2VqZW1wbGFyc2FzXC9wdWJsaWNcL2FwaVwvcmVnaXN0ZXIiLCJpYXQiOjE2NjE2NjAwODUsImV4cCI6MTY2MTY2MzY4NSwibmJmIjoxNjYxNjYwMDg1LCJqdGkiOiJGQ3h1YXVKRlNTVnVaQmlSIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.T9fMfaDgz0KJ6ezF3MT8aTx6bzaoI43MbhQap-HotQo'
-        }})
+        await this.axios.get("http://localhost/ejemplarsas/public/api/trabajadores")
         .then(response => {
             this.trabajadores = response.data.trabajadores          
         })
